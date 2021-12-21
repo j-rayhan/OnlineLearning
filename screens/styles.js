@@ -58,6 +58,23 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.radius,
     backgroundColor: COLORS.primary,
   },
+  learningBG: {
+    alignItems: 'flex-start',
+    padding: SIZES.padding / 2,
+    marginHorizontal: SIZES.padding,
+    marginTop: SIZES.padding,
+  },
+  learningImg: {
+    width: '100%',
+    height: 110,
+    marginTop: SIZES.padding,
+  },
+  startLearningText: {
+    height: 40,
+    borderRadius: 20,
+    paddingHorizontal: SIZES.padding,
+    backgroundColor: COLORS.white,
+  },
 });
 
 export {styles};

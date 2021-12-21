@@ -1,2 +1,3 @@
 import IconBtn from './IconBtn';
-export {IconBtn};
+import TextBtn from './TextBtn';
+export {IconBtn, TextBtn};
