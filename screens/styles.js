@@ -110,6 +110,19 @@ const styles = StyleSheet.create({
     height: 30,
     backgroundColor: COLORS.white,
   },
+  // Search Screen
+  searchContainer: {
+    marginTop: 100,
+    paddingBottom: 300,
+  },
+  searchSection: {
+    position: 'absolute',
+    top: 50,
+    height: 50,
+    left: 0,
+    right: 0,
+    paddingHorizontal: SIZES.padding,
+  },
 });
 
 export {styles};
