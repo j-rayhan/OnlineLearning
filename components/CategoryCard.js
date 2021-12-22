@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {ImageBackground, Text, TouchableOpacity} from 'react-native';
-import {COLORS, FONTS} from '../constants';
+import {COLORS, FONTS, SIZES} from '../constants';
 import {styles} from '../screens/styles';
 
 const CategoryCard = ({containerStyle, category}) => {
@@ -13,6 +13,9 @@ const CategoryCard = ({containerStyle, category}) => {
         style={{
           ...styles.categoryContainer,
           ...containerStyle,
+        }}
+        imageStyle={{
+          borderRadius: SIZES.radius,
         }}>
         <Text
           style={{
