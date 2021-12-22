@@ -10,8 +10,29 @@ import {
   dummyData,
   constants,
 } from '../../constants';
-import {IconBtn, TextBtn, VerticalCourseCard} from '../../components';
+import {
+  CategoryCard,
+  IconBtn,
+  LineDivider,
+  TextBtn,
+  VerticalCourseCard,
+} from '../../components';
 import {styles} from '../styles';
+const Section = ({containerStyle, title, onPress, children}) => {
+  return (
+    <View style={containerStyle}>
+      <View style={{...styles.row, paddingHorizontal: SIZES.padding}}>
+        <Text style={styles.sectionTitle}>{title}</Text>
+        <TextBtn
+          contentContainerStyle={styles.homeSectionSeeAllBtn}
+          label={'See All'}
+          onPress={onPress}
+        />
+      </View>
+      {children}
+    </View>
+  );
+};
 const Home = () => {
   const renderHeader = () => {
     return (
@@ -100,6 +121,37 @@ const Home = () => {
       />
     );
   };
+  const renderCategories = () => {
+    return (
+      <Section title={'Categories'}>
+        <FlatList
+          horizontal
+          listKey="Categories"
+          data={dummyData.categories}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={item => `category_${item.id}`}
+          contentContainerStyle={{
+            marginTop: SIZES.radius,
+          }}
+          renderItem={({item, index}) => {
+            return (
+              <CategoryCard
+                // eslint-disable-next-line react-native/no-inline-styles
+                containerStyle={{
+                  marginLeft: index === 0 ? SIZES.padding : SIZES.base,
+                  marginRight:
+                    index === dummyData.categories.length - 1
+                      ? SIZES.padding
+                      : 0,
+                }}
+                category={item}
+              />
+            );
+          }}
+        />
+      </Section>
+    );
+  };
   return (
     <View style={styles.containerWhite}>
       {/* header section */}
@@ -114,6 +166,9 @@ const Home = () => {
         {renderStartLearning()}
         {/* Course */}
         {renderCourse()}
+        <LineDivider lineStyle={{marginVertical: SIZES.padding}} />
+        {/* Categories */}
+        {renderCategories()}
       </ScrollView>
     </View>
   );

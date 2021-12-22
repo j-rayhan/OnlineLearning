@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS, SIZES} from '../constants';
+import {COLORS, FONTS, SIZES} from '../constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -79,6 +79,19 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: SIZES.padding,
     backgroundColor: COLORS.white,
+  },
+  sectionTitle: {flex: 1, ...FONTS.h2},
+  homeSectionSeeAllBtn: {
+    width: 80,
+    borderRadius: 30,
+    backgroundColor: COLORS.primary,
+  },
+  categoryContainer: {
+    width: 200,
+    height: 150,
+    paddingHorizontal: SIZES.padding,
+    paddingVertical: SIZES.radius,
+    justifyContent: 'flex-end',
   },
 });
 
