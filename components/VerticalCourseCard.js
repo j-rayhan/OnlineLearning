@@ -1,6 +1,8 @@
 import * as React from 'react';
-import {Image, TouchableOpacity} from 'react-native';
-import {SIZES} from '../constants';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {IconLabel} from '.';
+import {COLORS, FONTS, icons, SIZES} from '../constants';
+import {styles} from '../screens/styles';
 
 const VCCard = ({containerStyle, course}) => {
   return (
@@ -17,6 +19,32 @@ const VCCard = ({containerStyle, course}) => {
         }}
       />
       {/* Detail section */}
+      <View style={styles.row}>
+        <View
+          style={{
+            height: 45,
+            width: 45,
+            borderRadius: SIZES.padding,
+            backgroundColor: COLORS.primary,
+            ...styles.center,
+          }}>
+          <Image
+            source={icons.play}
+            resizeMode="contain"
+            style={styles.iconSize20}
+          />
+        </View>
+        <View style={{flexShrink: 1, paddingHorizontal: SIZES.radius}}>
+          <Text style={{flex: 1, ...FONTS.h3, fontSize: 18}}>
+            {course.title}
+          </Text>
+          <IconLabel
+            icon={icons.time}
+            label={course.duration}
+            contentContainerStyle={{marginTop: SIZES.base}}
+          />
+        </View>
+      </View>
     </TouchableOpacity>
   );
 };

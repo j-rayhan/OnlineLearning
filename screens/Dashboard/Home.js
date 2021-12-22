@@ -15,11 +15,7 @@ import {styles} from '../styles';
 const Home = () => {
   const renderHeader = () => {
     return (
-      <View
-        style={[
-          styles.row,
-          {marginTop: 40, marginBottom: 10, paddingHorizontal: SIZES.padding},
-        ]}>
+      <View style={[styles.row, styles.homeHeaderContainer]}>
         {/* Greeting */}
         <View style={styles.container}>
           <Text style={FONTS.h2}>HI Mr.JOHO</Text>
@@ -89,10 +85,11 @@ const Home = () => {
         renderItem={({item, index}) => {
           return (
             <VerticalCourseCard
+              // eslint-disable-next-line react-native/no-inline-styles
               containerStyle={{
-                marginLeft: index == 0 ? SIZES.padding : SIZES.radius,
+                marginLeft: index === 0 ? SIZES.padding : SIZES.radius,
                 marginRight:
-                  index == dummyData.courses_list_1.length - 1
+                  index === dummyData.courses_list_1.length - 1
                     ? SIZES.padding
                     : 0,
               }}

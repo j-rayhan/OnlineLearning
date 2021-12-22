@@ -58,6 +58,11 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.radius,
     backgroundColor: COLORS.primary,
   },
+  homeHeaderContainer: {
+    marginTop: 40,
+    marginBottom: 10,
+    paddingHorizontal: SIZES.padding,
+  },
   learningBG: {
     alignItems: 'flex-start',
     padding: SIZES.padding / 2,
