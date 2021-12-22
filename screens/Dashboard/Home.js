@@ -1,23 +1,17 @@
 import React from 'react';
 import {View, Text, ImageBackground, Image, ScrollView} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
-import {
-  COLORS,
-  FONTS,
-  SIZES,
-  icons,
-  images,
-  dummyData,
-  constants,
-} from '../../constants';
+import {COLORS, FONTS, SIZES, icons, images, dummyData} from '../../constants';
 import {
   CategoryCard,
+  HorizontalCourseCard,
   IconBtn,
   LineDivider,
   TextBtn,
   VerticalCourseCard,
 } from '../../components';
 import {styles} from '../styles';
+
 const Section = ({containerStyle, title, onPress, children}) => {
   return (
     <View style={containerStyle}>
@@ -33,6 +27,7 @@ const Section = ({containerStyle, title, onPress, children}) => {
     </View>
   );
 };
+
 const Home = () => {
   const renderHeader = () => {
     return (
@@ -152,6 +147,40 @@ const Home = () => {
       </Section>
     );
   };
+  const renderPopularCourse = () => {
+    return (
+      <Section
+        title={'Popular Course'}
+        containerStyle={{marginTop: SIZES.padding}}>
+        <FlatList
+          listKey="PopularCourse"
+          data={dummyData.courses_list_2}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={item => `popular_course_${item.id}`}
+          contentContainerStyle={{
+            marginTop: SIZES.radius,
+            paddingHorizontal: SIZES.padding,
+          }}
+          renderItem={({item, index}) => {
+            return (
+              <HorizontalCourseCard
+                // eslint-disable-next-line react-native/no-inline-styles
+                containerStyle={{
+                  marginVertical: SIZES.padding,
+                  marginTop: index === 0 ? SIZES.radius : SIZES.padding,
+                  radius: SIZES.padding,
+                }}
+                course={item}
+              />
+            );
+          }}
+          ItemSeparatorComponent={() => (
+            <LineDivider lineStyle={{backgroundColor: COLORS.gray20}} />
+          )}
+        />
+      </Section>
+    );
+  };
   return (
     <View style={styles.containerWhite}>
       {/* header section */}
@@ -169,6 +198,8 @@ const Home = () => {
         <LineDivider lineStyle={{marginVertical: SIZES.padding}} />
         {/* Categories */}
         {renderCategories()}
+        {/* Popular Course */}
+        {renderPopularCourse()}
       </ScrollView>
     </View>
   );

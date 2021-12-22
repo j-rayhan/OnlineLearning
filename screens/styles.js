@@ -42,6 +42,10 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 1,
   },
+  iconSize15: {
+    width: 15,
+    height: 15,
+  },
   iconSize20: {
     width: 20,
     height: 20,
@@ -92,6 +96,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding,
     paddingVertical: SIZES.radius,
     justifyContent: 'flex-end',
+  },
+  imageBackgroundContainer: {
+    width: 150,
+    height: 120,
+    marginBottom: SIZES.radius,
+  },
+  IBCImage: {
+    position: 'absolute',
+    top: 10,
+    right: 20,
+    width: 30,
+    height: 30,
+    backgroundColor: COLORS.white,
   },
 });
 
