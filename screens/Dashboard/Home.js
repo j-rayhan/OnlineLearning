@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, ImageBackground, Image, ScrollView} from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 import {
   COLORS,
   FONTS,
@@ -9,7 +10,7 @@ import {
   dummyData,
   constants,
 } from '../../constants';
-import {IconBtn, TextBtn} from '../../components';
+import {IconBtn, TextBtn, VerticalCourseCard} from '../../components';
 import {styles} from '../styles';
 const Home = () => {
   const renderHeader = () => {
@@ -74,6 +75,34 @@ const Home = () => {
       </ImageBackground>
     );
   };
+  const renderCourse = () => {
+    return (
+      <FlatList
+        horizontal
+        listKey="Course"
+        data={dummyData.courses_list_1}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => `course_${item.id}`}
+        contentContainerStyle={{
+          marginTop: SIZES.padding,
+        }}
+        renderItem={({item, index}) => {
+          return (
+            <VerticalCourseCard
+              containerStyle={{
+                marginLeft: index == 0 ? SIZES.padding : SIZES.radius,
+                marginRight:
+                  index == dummyData.courses_list_1.length - 1
+                    ? SIZES.padding
+                    : 0,
+              }}
+              course={item}
+            />
+          );
+        }}
+      />
+    );
+  };
   return (
     <View style={styles.containerWhite}>
       {/* header section */}
@@ -86,6 +115,8 @@ const Home = () => {
         showsVerticalScrollIndicator={false}>
         {/* Start learning */}
         {renderStartLearning()}
+        {/* Course */}
+        {renderCourse()}
       </ScrollView>
     </View>
   );

@@ -339,7 +339,9 @@ PODS:
     - React-jsi (= 0.66.1)
     - React-logger (= 0.66.1)
     - React-perflogger (= 0.66.1)
-  - RNReanimated (2.3.0-beta.2):
+  - RNGestureHandler (2.1.0):
+    - React-Core
+  - RNReanimated (2.3.1):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -365,12 +367,13 @@ PODS:
     - React-RCTNetwork
     - React-RCTSettings
     - React-RCTText
-    - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.8.0):
+  - RNScreens (3.10.1):
     - React-Core
     - React-RCTImage
+  - RNSVG (12.1.1):
+    - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -429,8 +432,10 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -511,10 +516,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -562,8 +571,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: 6600b5eed7c0fda4a433fa1198d1cb2690151791
   React-runtimeexecutor: 33a949a51bec5f8a3c9e8d8092deb259600d761e
   ReactCommon: 620442811dc6f707b4bf5e3b27d4f19c12d5a821
-  RNReanimated: 0a220d11e97e5de1c552e943a9a3f89b06c2cbf2
-  RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
+  RNGestureHandler: e5c7cab5f214503dcefd6b2b0cefb050e1f51c4a
+  RNReanimated: da3860204e5660c0dd66739936732197d359d753
+  RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
+  RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   Yoga: 2b4a01651f42a32f82e6cef3830a3ba48088237f
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
