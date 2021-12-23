@@ -1,17 +1,8 @@
 import * as React from 'react';
+import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {COLORS, FONTS, SIZES, icons, images} from '../../constants';
 import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
-import {COLORS, FONTS, SIZES, icons, images, dummyData} from '../../constants';
-import {
-  CategoryCard,
-  HorizontalCourseCard,
   IconBtn,
   LineDivider,
   TextBtn,
@@ -19,16 +10,31 @@ import {
   ProfileValue,
   ProfileRadioBtn,
 } from '../../components';
+import {toggleTheme} from '../../store/themeActions';
 import {styles} from '../styles';
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const {appTheme} = useSelector(state => state);
   const [newCourseNotification, setCourseNotification] = React.useState(false);
   const [studyReminder, setStudyReminder] = React.useState(false);
+
+  const handleTheme = () => {
+    if (appTheme.name === 'dark') {
+      dispatch(toggleTheme('light'));
+    } else {
+      dispatch(toggleTheme('dark'));
+    }
+  };
   const renderHeader = () => {
     return (
       <View style={[styles.rowSpread, styles.profileHeader]}>
         <Text style={{...FONTS.h1}}>Profile</Text>
-        <IconBtn icon={icons.sun} iconStyle={{tintColor: COLORS.black}} />
+        <IconBtn
+          icon={icons.sun}
+          iconStyle={{tintColor: COLORS.black}}
+          onPress={() => handleTheme()}
+        />
       </View>
     );
   };
@@ -129,7 +135,11 @@ const Profile = () => {
     );
   };
   return (
-    <View style={styles.containerWhite}>
+    <View
+      style={[
+        styles.containerWhite,
+        {backgroundColor: appTheme?.backgroundColor1},
+      ]}>
       {renderHeader()}
       <ScrollView
         contentContainerStyle={{

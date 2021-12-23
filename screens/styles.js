@@ -184,7 +184,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: SIZES.padding,
     borderWidth: 1,
     borderColor: COLORS.gray20,
-  }
+  },
+  radioBtnContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: COLORS.additionalColor11,
+  },
 });
 
 export {styles};
