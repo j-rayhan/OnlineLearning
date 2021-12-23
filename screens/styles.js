@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.white,
   },
+  flexRow: {flexDirection: 'row'},
   row: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -46,6 +47,10 @@ const styles = StyleSheet.create({
     width: 15,
     height: 15,
   },
+  iconSize17: {
+    width: 17,
+    height: 17,
+  },
   iconSize20: {
     width: 20,
     height: 20,
@@ -54,6 +59,7 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
   },
+  iconSize80: {width: 80, height: 80},
   // home screen styles
   tabIndicator: {
     position: 'absolute',
@@ -122,6 +128,55 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     paddingHorizontal: SIZES.padding,
+  },
+  // Profile Screen
+  profileHeader: {
+    marginTop: 50,
+    paddingHorizontal: SIZES.padding,
+  },
+  profileCardContainer: {
+    flexDirection: 'row',
+    marginTop: SIZES.padding,
+    paddingHorizontal: SIZES.radius,
+    paddingVertical: 20,
+    borderRadius: SIZES.radius,
+    backgroundColor: COLORS.primary3,
+  },
+  profileCardImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: COLORS.width,
+  },
+  profileCardCameraSection: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  profileCardCameraContainer: {
+    width: 30,
+    height: 30,
+    marginBottom: -15,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.primary,
+  },
+  profileCardDetailsContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginLeft: SIZES.radius,
+  },
+  overallProgress: {flex: 1, color: COLORS.white, ...FONTS.body4},
+  PCTBContentContainerStyle: {
+    height: 35,
+    marginTop: SIZES.padding,
+    paddingHorizontal: SIZES.radius,
+    borderRadius: 20,
+    backgroundColor: COLORS.white,
   },
 });
 

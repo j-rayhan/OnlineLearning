@@ -15,21 +15,14 @@ import {
   IconBtn,
   LineDivider,
   TextBtn,
-  VerticalCourseCard,
+  ProgressBar,
 } from '../../components';
 import {styles} from '../styles';
 
 const Profile = () => {
   const renderHeader = () => {
     return (
-      <View
-        style={[
-          styles.rowSpread,
-          {
-            marginTop: 50,
-            paddingHorizontal: SIZES.padding,
-          },
-        ]}>
+      <View style={[styles.rowSpread, styles.profileHeader]}>
         <Text style={{...FONTS.h1}}>Profile</Text>
         <IconBtn icon={icons.sun} iconStyle={{tintColor: COLORS.black}} />
       </View>
@@ -37,55 +30,47 @@ const Profile = () => {
   };
   const renderProfileCard = () => {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          marginTop: SIZES.padding,
-          paddingHorizontal: SIZES.radius,
-          paddingVertical: 20,
-          borderRadius: SIZES.radius,
-          backgroundColor: COLORS.primary3,
-        }}>
-        <TouchableOpacity style={{width: 80, height: 80}}>
-          <Image
-            source={images.profile}
-            style={{
-              width: '100%',
-              height: '100%',
-              borderRadius: 40,
-              borderWidth: 1,
-              borderColor: COLORS.width,
-            }}
-          />
-          <View
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-            }}>
-            <View
-              style={{
-                width: 30,
-                height: 30,
-                marginBottom: -15,
-                borderRadius: 15,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: COLORS.primary,
-              }}>
+      <View style={styles.profileCardContainer}>
+        <TouchableOpacity style={styles.iconSize80}>
+          <Image source={images.profile} style={styles.profileCardImage} />
+          <View style={styles.profileCardCameraSection}>
+            <View style={styles.profileCardCameraContainer}>
               <Image
                 source={icons.camera}
                 resizeMode="contain"
-                style={{
-                  width: 17,
-                  height: 17,
-                }}
+                style={styles.iconSize17}
               />
             </View>
           </View>
         </TouchableOpacity>
+        {/* Details */}
+        <View style={styles.profileCardDetailsContainer}>
+          <Text style={{color: COLORS.white, ...FONTS.h2}}>
+            By react native
+          </Text>
+          <Text style={{color: COLORS.white, ...FONTS.body4}}>
+            Full Stack Developer
+          </Text>
+          {/* Progress */}
+          <ProgressBar
+            progress={'58%'}
+            containerStyle={{
+              marginTop: SIZES.radius,
+            }}
+          />
+          <View style={styles.flexRow}>
+            <Text style={styles.overallProgress}>Overall Progress</Text>
+            <Text style={{color: COLORS.white, ...FONTS.body4}}>58%</Text>
+          </View>
+          {/* Member */}
+          <TextBtn
+            label={'+ Become Member'}
+            contentContainerStyle={styles.PCTBContentContainerStyle}
+            labelStyle={{
+              color: COLORS.primary,
+            }}
+          />
+        </View>
       </View>
     );
   };
@@ -95,7 +80,7 @@ const Profile = () => {
       <ScrollView
         contentContainerStyle={{
           paddingHorizontal: SIZES.padding,
-          paddingBottom: 300,
+          paddingBottom: SIZES.width * 0.4,
         }}>
         {renderProfileCard()}
       </ScrollView>
