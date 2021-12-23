@@ -16,10 +16,14 @@ import {
   LineDivider,
   TextBtn,
   ProgressBar,
+  ProfileValue,
+  ProfileRadioBtn,
 } from '../../components';
 import {styles} from '../styles';
 
 const Profile = () => {
+  const [newCourseNotification, setCourseNotification] = React.useState(false);
+  const [studyReminder, setStudyReminder] = React.useState(false);
   const renderHeader = () => {
     return (
       <View style={[styles.rowSpread, styles.profileHeader]}>
@@ -74,6 +78,56 @@ const Profile = () => {
       </View>
     );
   };
+  const renderProfileSection1 = () => {
+    return (
+      <View style={styles.profileSectionContainer}>
+        <ProfileValue
+          icon={icons.profile}
+          label={'Name'}
+          value={'By MR. Designer'}
+        />
+        <LineDivider />
+        <ProfileValue
+          icon={icons.email}
+          label={'Email'}
+          value={'example@example.com'}
+        />
+        <LineDivider />
+        <ProfileValue
+          icon={icons.password}
+          label={'Password'}
+          value={'Update 2 weeks ago'}
+        />
+        <LineDivider />
+        <ProfileValue
+          icon={icons.call}
+          label={'Call'}
+          value={'+8801911111111'}
+        />
+      </View>
+    );
+  };
+  const renderProfileSection2 = () => {
+    return (
+      <View style={styles.profileSectionContainer}>
+        <ProfileValue icon={icons.star_1} value={'Pages'} />
+        <LineDivider />
+        <ProfileRadioBtn
+          icon={icons.new_icon}
+          label={'New Course Notification'}
+          isSelected={newCourseNotification}
+          onPress={() => setCourseNotification(!newCourseNotification)}
+        />
+        <LineDivider />
+        <ProfileRadioBtn
+          icon={icons.reminder}
+          label={'Study Reminder'}
+          isSelected={studyReminder}
+          onPress={() => setStudyReminder(!studyReminder)}
+        />
+      </View>
+    );
+  };
   return (
     <View style={styles.containerWhite}>
       {renderHeader()}
@@ -83,6 +137,9 @@ const Profile = () => {
           paddingBottom: SIZES.width * 0.4,
         }}>
         {renderProfileCard()}
+        {/* Profile sections */}
+        {renderProfileSection1()}
+        {renderProfileSection2()}
       </ScrollView>
     </View>
   );

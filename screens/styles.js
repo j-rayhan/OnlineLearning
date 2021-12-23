@@ -178,6 +178,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: COLORS.white,
   },
+  profileSectionContainer: {
+    marginTop: SIZES.padding,
+    borderRadius: SIZES.radius,
+    paddingHorizontal: SIZES.padding,
+    borderWidth: 1,
+    borderColor: COLORS.gray20,
+  }
 });
 
 export {styles};

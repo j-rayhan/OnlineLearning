@@ -6,6 +6,8 @@ import HorizontalCourseCard from './HorizontalCourseCard';
 import LineDivider from './LineDivider';
 import CategoryCard from './CategoryCard';
 import ProgressBar from './ProgressBar';
+import ProfileRadioBtn from './ProfileRadioBtn';
+import ProfileValue from './ProfileValue';
 export {
   IconBtn,
   IconLabel,
@@ -15,4 +17,6 @@ export {
   LineDivider,
   CategoryCard,
   ProgressBar,
+  ProfileValue,
+  ProfileRadioBtn,
 };
