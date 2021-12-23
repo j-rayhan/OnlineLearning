@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {View, Text, TouchableOpacity, Animated, Image} from 'react-native';
 import {Shadow} from 'react-native-shadow-2';
+import { useSelector } from "react-redux";
 import {Home, Profile, Search} from '../../screens';
 import {COLORS, SIZES, FONTS, constants} from '../../constants';
 import {styles} from '../styles';
@@ -77,6 +78,7 @@ const Tabs = ({scrollX, onBottomTabPress}) => {
   );
 };
 const MainLayout = () => {
+  const {appTheme} = useSelector(state => state);
   const flatListRef = React.useRef();
   const scrollX = React.useRef(new Animated.Value(0)).current;
   const onBottomTabPress = React.useCallback(bottomIndex => {
@@ -122,9 +124,10 @@ const MainLayout = () => {
     return (
       <View
         style={{
-          marginBottom: SIZES.padding - 4,
+          paddingBottom: SIZES.height > 800 ? 20 : 5,
           paddingHorizontal: SIZES.padding,
           paddingVertical: SIZES.radius,
+          backgroundColor: appTheme?.backgroundColor1,
         }}>
         <Shadow size={[SIZES.width - SIZES.padding * 2, 85]}>
           <View
@@ -132,7 +135,7 @@ const MainLayout = () => {
               styles.container,
               {
                 borderRadius: SIZES.radius,
-                backgroundColor: COLORS.primary3,
+                backgroundColor: appTheme?.backgroundColor2,
               },
             ]}>
             <Tabs scrollX={scrollX} onBottomTabPress={onBottomTabPress} />

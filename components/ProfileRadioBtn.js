@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {View, Text, Image, TouchableOpacity, Animated} from 'react-native';
+import {useSelector} from 'react-redux';
 import {COLORS, FONTS, SIZES} from '../constants';
 import {styles} from '../screens/styles';
 
 const ProfileRadioBtn = ({icon, label, isSelected, onPress}) => {
+  const {appTheme} = useSelector(state => state);
   const radioAnimated = React.useRef(new Animated.Value(0)).current;
   const circleColorAnimated = radioAnimated.interpolate({
     inputRange: [0, 17],
@@ -22,19 +24,26 @@ const ProfileRadioBtn = ({icon, label, isSelected, onPress}) => {
   }, [isSelected, radioAnimated]);
   return (
     <View style={[styles.row, {height: 80}]}>
-      <View style={[styles.center, styles.radioBtnContainer]}>
+      <View
+        style={[
+          styles.center,
+          styles.radioBtnContainer,
+          {backgroundColor: appTheme?.backgroundColor3},
+        ]}>
         <Image
           source={icon}
           resizeMode="contain"
           style={{
             ...styles.iconSize25,
-            tintColor: COLORS.primary,
+            tintColor: appTheme?.tintColor,
           }}
         />
       </View>
       {/* label and value */}
       <View style={[styles.container, {marginLeft: SIZES.radius}]}>
-        {label && <Text style={{...FONTS.h3}}>{label}</Text>}
+        {label && (
+          <Text style={{color: appTheme?.textColor, ...FONTS.h3}}>{label}</Text>
+        )}
       </View>
       {/* Arrow icon */}
       <TouchableOpacity
@@ -57,7 +66,7 @@ const ProfileRadioBtn = ({icon, label, isSelected, onPress}) => {
             borderRadius: 15,
             borderWidth: 5,
             borderColor: circleColorAnimated, // Animated
-            backgroundColor: COLORS.white,
+            backgroundColor: appTheme?.backgroundColor1,
           }}
         />
       </TouchableOpacity>

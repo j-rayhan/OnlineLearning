@@ -29,10 +29,10 @@ const Profile = () => {
   const renderHeader = () => {
     return (
       <View style={[styles.rowSpread, styles.profileHeader]}>
-        <Text style={{...FONTS.h1}}>Profile</Text>
+        <Text style={{...FONTS.h1, color: appTheme?.textColor}}>Profile</Text>
         <IconBtn
           icon={icons.sun}
-          iconStyle={{tintColor: COLORS.black}}
+          iconStyle={{tintColor: appTheme?.tintColor}}
           onPress={() => handleTheme()}
         />
       </View>
@@ -40,7 +40,11 @@ const Profile = () => {
   };
   const renderProfileCard = () => {
     return (
-      <View style={styles.profileCardContainer}>
+      <View
+        style={[
+          styles.profileCardContainer,
+          {backgroundColor: appTheme?.backgroundColor2},
+        ]}>
         <TouchableOpacity style={styles.iconSize80}>
           <Image source={images.profile} style={styles.profileCardImage} />
           <View style={styles.profileCardCameraSection}>
@@ -75,9 +79,12 @@ const Profile = () => {
           {/* Member */}
           <TextBtn
             label={'+ Become Member'}
-            contentContainerStyle={styles.PCTBContentContainerStyle}
+            contentContainerStyle={{
+              ...styles.PCTBContentContainerStyle,
+              backgroundColor: appTheme?.backgroundColor4,
+            }}
             labelStyle={{
-              color: COLORS.primary,
+              color: appTheme?.textColor2,
             }}
           />
         </View>
