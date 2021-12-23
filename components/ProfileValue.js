@@ -6,16 +6,7 @@ import {styles} from '../screens/styles';
 const ProfileValue = ({icon, label, value, onPress}) => {
   return (
     <TouchableOpacity style={[styles.row, {height: 80}]} onPress={onPress}>
-      <View
-        style={[
-          styles.center,
-          {
-            width: 40,
-            height: 40,
-            borderRadius: 20,
-            backgroundColor: COLORS.additionalColor11,
-          },
-        ]}>
+      <View style={[styles.center, styles.radioBtnContainer]}>
         <Image
           source={icon}
           resizeMode="contain"

@@ -1,21 +1,28 @@
 import * as React from 'react';
 import {View, Text, Image, TouchableOpacity, Animated} from 'react-native';
-import {COLORS, FONTS, icons, SIZES} from '../constants';
+import {COLORS, FONTS, SIZES} from '../constants';
 import {styles} from '../screens/styles';
 
 const ProfileRadioBtn = ({icon, label, isSelected, onPress}) => {
+  const radioAnimated = React.useRef(new Animated.Value(0)).current;
+  const circleColorAnimated = radioAnimated.interpolate({
+    inputRange: [0, 17],
+    outputRange: [COLORS.gray20, COLORS.primary],
+  });
+  const lineColorAnimated = radioAnimated.interpolate({
+    inputRange: [0, 17],
+    outputRange: [COLORS.additionalColor4, COLORS.additionalColor13],
+  });
+  React.useEffect(() => {
+    Animated.timing(radioAnimated, {
+      toValue: isSelected ? 17 : 0,
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
+  }, [isSelected, radioAnimated]);
   return (
     <View style={[styles.row, {height: 80}]}>
-      <View
-        style={[
-          styles.center,
-          {
-            width: 40,
-            height: 40,
-            borderRadius: 20,
-            backgroundColor: COLORS.additionalColor11,
-          },
-        ]}>
+      <View style={[styles.center, styles.radioBtnContainer]}>
         <Image
           source={icon}
           resizeMode="contain"
@@ -38,18 +45,18 @@ const ProfileRadioBtn = ({icon, label, isSelected, onPress}) => {
             width: '100%',
             height: 5,
             borderRadius: 5,
-            backgroundColor: COLORS.primary, //Animated
+            backgroundColor: lineColorAnimated, //Animated
           }}
         />
         <Animated.View
           style={{
             position: 'absolute',
-            left: 0, // Animated
+            left: radioAnimated, // Animated
             width: 25,
             height: 25,
             borderRadius: 15,
             borderWidth: 5,
-            borderColor: COLORS.primary3, // Animated
+            borderColor: circleColorAnimated, // Animated
             backgroundColor: COLORS.white,
           }}
         />
