@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, ImageBackground, Image, ScrollView} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {FlatList} from 'react-native-gesture-handler';
 import {COLORS, FONTS, SIZES, icons, images, dummyData} from '../../constants';
 import {
@@ -29,6 +30,7 @@ const Section = ({containerStyle, title, onPress, children}) => {
 };
 
 const Home = () => {
+  const navigation = useNavigation();
   const renderHeader = () => {
     return (
       <View style={[styles.row, styles.homeHeaderContainer]}>
@@ -140,6 +142,7 @@ const Home = () => {
                       : 0,
                 }}
                 category={item}
+                onPress={() => navigation.navigate('CourseListing')}
               />
             );
           }}

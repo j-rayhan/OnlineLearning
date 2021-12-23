@@ -3,9 +3,9 @@ import {ImageBackground, Text, TouchableOpacity} from 'react-native';
 import {COLORS, FONTS, SIZES} from '../constants';
 import {styles} from '../screens/styles';
 
-const CategoryCard = ({containerStyle, category}) => {
+const CategoryCard = ({containerStyle, category, onPress}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       {/* Image section */}
       <ImageBackground
         source={category.thumbnail}
