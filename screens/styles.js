@@ -60,6 +60,12 @@ const styles = StyleSheet.create({
     height: 25,
   },
   iconSize80: {width: 80, height: 80},
+  categoryCardTitleContainer: {
+    position: 'absolute',
+    bottom: 50,
+    left: 5,
+  },
+  categoryCardTitle: {...FONTS.h2, color: COLORS.white, position: 'absolute'},
   // home screen styles
   tabIndicator: {
     position: 'absolute',

@@ -12,7 +12,15 @@ import Animated, {
   withTiming,
   runOnJS,
 } from 'react-native-reanimated';
-
+//
+import {
+  IconBtn,
+  LineDivider,
+  TextBtn,
+  ProgressBar,
+  ProfileValue,
+  ProfileRadioBtn,
+} from '../../components';
 import {COLORS, FONTS, SIZES, icons, dummyData} from '../../constants';
 import {styles} from '../styles';
 

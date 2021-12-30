@@ -133,6 +133,7 @@ const Home = () => {
           renderItem={({item, index}) => {
             return (
               <CategoryCard
+                sharedElementPrefix="Home"
                 // eslint-disable-next-line react-native/no-inline-styles
                 containerStyle={{
                   marginLeft: index === 0 ? SIZES.padding : SIZES.base,
@@ -142,7 +143,12 @@ const Home = () => {
                       : 0,
                 }}
                 category={item}
-                onPress={() => navigation.navigate('CourseListing')}
+                onPress={() =>
+                  navigation.navigate('CourseListing', {
+                    category: item,
+                    sharedElementPrefix: 'Home',
+                  })
+                }
               />
             );
           }}

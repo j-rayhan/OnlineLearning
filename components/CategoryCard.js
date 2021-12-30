@@ -1,30 +1,41 @@
 import * as React from 'react';
-import {ImageBackground, Text, TouchableOpacity} from 'react-native';
-import {COLORS, FONTS, SIZES} from '../constants';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {SharedElement} from 'react-native-shared-element';
+import {SIZES} from '../constants';
 import {styles} from '../screens/styles';
 
-const CategoryCard = ({containerStyle, category, onPress}) => {
+const CategoryCard = ({
+  sharedElementPrefix,
+  containerStyle,
+  category,
+  onPress,
+}) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      {/* Image section */}
-      <ImageBackground
-        source={category.thumbnail}
-        resizeMode="cover"
-        style={{
-          ...styles.categoryContainer,
-          ...containerStyle,
-        }}
-        imageStyle={{
-          borderRadius: SIZES.radius,
-        }}>
-        <Text
+    <TouchableOpacity
+      style={{width: 200, height: 150, ...containerStyle}}
+      onPress={onPress}>
+      <SharedElement
+        id={`${sharedElementPrefix}_category_card_bg_${category?.id}`}
+        style={[StyleSheet.absoluteFill]}>
+        {/* Image section */}
+        <Image
+          source={category.thumbnail}
+          resizeMode="cover"
           style={{
-            color: COLORS.white,
-            ...FONTS.h2,
-          }}>
-          {category?.title}
-        </Text>
-      </ImageBackground>
+            width: SIZES['100_P'],
+            height: SIZES['100_P'],
+            borderRadius: SIZES.radius,
+          }}
+        />
+      </SharedElement>
+      {/* Title */}
+      <View style={styles.categoryCardTitleContainer}>
+        <SharedElement
+          id={`${sharedElementPrefix}_category_card_title_${category?.id}`}
+          style={[StyleSheet.absoluteFillObject]}>
+          <Text style={styles.categoryCardTitle}>{category?.title}</Text>
+        </SharedElement>
+      </View>
     </TouchableOpacity>
   );
 };

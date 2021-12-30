@@ -31,6 +31,7 @@ export const COLORS = {
   transparentBlack7: 'rgba(0, 0, 0, 0.7)',
 };
 export const SIZES = {
+  '100_P': '100%',
   // global sizes
   base: 8,
   font: 14,
