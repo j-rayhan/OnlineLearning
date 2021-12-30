@@ -72,6 +72,36 @@ const CourseListing = ({navigation, route}) => {
         ),
       };
     });
+    const headerShowOnScrollAnimatedStyle = useAnimatedStyle(() => {
+      return {
+        opacity: interpolate(scrollY.value, [80, 0], [1, 0], Extrapolate.CLAMP),
+        transform: [
+          {
+            translateY: interpolate(
+              scrollY.value,
+              inputRange,
+              [50, 130],
+              Extrapolate.CLAMP,
+            ),
+          },
+        ],
+      };
+    });
+    const headerHideOnScrollAnimatedStyle = useAnimatedStyle(() => {
+      return {
+        opacity: interpolate(scrollY.value, [80, 0], [0, 1], Extrapolate.CLAMP),
+        transform: [
+          {
+            translateY: interpolate(
+              scrollY.value,
+              inputRange,
+              [0, 200],
+              Extrapolate.CLAMP,
+            ),
+          },
+        ],
+      };
+    });
     return (
       <Animated.View
         style={[
@@ -87,18 +117,20 @@ const CourseListing = ({navigation, route}) => {
             style={{
               width: SIZES['100_P'],
               height: SIZES['100_P'],
-              borderBottomLeftRadius: 60,
+              borderBottomLeftRadius: SIZES.radius * 5,
             }}
           />
         </SharedElement>
         {/* Title */}
-        <Animated.View style={styles.courseListingHeaderText}>
+        <Animated.View
+          style={[
+            styles.courseListingHeaderText,
+            headerHideOnScrollAnimatedStyle,
+          ]}>
           <SharedElement
             id={`${sharedElementPrefix}_category_card_title_${category?.id}`}
             style={[StyleSheet.absoluteFillObject]}>
-            <Text style={[styles.categoryCardTitle, FONTS.h1]}>
-              {category?.title}
-            </Text>
+            <Text style={styles.categoryCardTitle}>{category?.title}</Text>
           </SharedElement>
         </Animated.View>
         {/* Back Icon */}
@@ -119,6 +151,7 @@ const CourseListing = ({navigation, route}) => {
             styles.courseListingHeaderImage,
             headerFadeInAnimatedStyle,
             headerTranslateAnimatedStyle,
+            headerHideOnScrollAnimatedStyle,
           ]}
         />
       </Animated.View>
