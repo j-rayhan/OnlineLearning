@@ -229,6 +229,12 @@ const styles = StyleSheet.create({
     width: 100,
     height: 200,
   },
+  filterBtnContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: COLORS.primary,
+  },
 });
 
 export {styles};

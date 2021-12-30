@@ -21,12 +21,20 @@ import {
   ProgressBar,
   ProfileValue,
   ProfileRadioBtn,
+  HorizontalCourseCard,
 } from '../../components';
 import {COLORS, FONTS, SIZES, icons, dummyData, images} from '../../constants';
 import {styles} from '../styles';
 
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+
 const CourseListing = ({navigation, route}) => {
   const {category, sharedElementPrefix} = route.params;
+  const flatListRef = React.useRef();
+  const scrollY = useSharedValue(0);
+  const onScroll = useAnimatedScrollHandler(e => {
+    scrollY: e.contentInset.y;
+  });
   const backHandler = () => {
     navigation.goBack();
   };
@@ -101,8 +109,62 @@ const CourseListing = ({navigation, route}) => {
       </Animated.View>
     );
   };
+  const renderResults = () => {
+    return (
+      <AnimatedFlatList
+        ref={flatListRef}
+        data={dummyData.courses_list_2}
+        keyExtractor={item => `results_${item?.id}`}
+        contentContainerStyle={{
+          paddingHorizontal: SIZES.padding,
+        }}
+        showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={16}
+        keyboardDismissMode={'on-drag'}
+        onScroll={onScroll}
+        ListHeaderComponent={
+          <View
+            style={[styles.row, {marginTop: 270, marginBottom: SIZES.base}]}>
+            <Text
+              style={{
+                ...FONTS.body3,
+                ...styles.container,
+              }}>
+              57,345 Results
+            </Text>
+            {/* Filter button */}
+            <IconBtn
+              icon={icons.filter}
+              iconStyle={styles.iconSize20}
+              containerStyle={[styles.center, styles.filterBtnContainer]}
+            />
+          </View>
+        }
+        renderItem={({item, index}) => {
+          return (
+            <HorizontalCourseCard
+              course={item}
+              containerStyle={{
+                marginVertical: SIZES.padding,
+                marginTop: index === 0 ? SIZES.radius : SIZES.padding,
+              }}
+            />
+          );
+        }}
+        ItemSeparatorComponent={() => (
+          <LineDivider
+            lineStyle={{
+              backgroundColor: COLORS.gray20,
+            }} 
+          />
+        )}
+      />
+    );
+  };
   return (
     <View style={styles.containerWhite}>
+      {/* Results */}
+      {renderResults()}
       {/* Header */}
       {renderHeader()}
     </View>
