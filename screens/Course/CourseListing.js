@@ -27,13 +27,13 @@ import {COLORS, FONTS, SIZES, icons, dummyData, images} from '../../constants';
 import {styles} from '../styles';
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
-
+const HEADER_HEIGHT = 250;
 const CourseListing = ({navigation, route}) => {
   const {category, sharedElementPrefix} = route.params;
   const flatListRef = React.useRef();
   const scrollY = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler(e => {
-    scrollY: e.contentInset.y;
+    scrollY.value = e.contentOffset.y;
   });
   const backHandler = () => {
     navigation.goBack();
@@ -41,6 +41,7 @@ const CourseListing = ({navigation, route}) => {
   const headerSharedValue = useSharedValue(80);
 
   const renderHeader = () => {
+    const inputRange = [0, HEADER_HEIGHT - 50];
     headerSharedValue.value = withDelay(
       500,
       withTiming(0, {
@@ -61,8 +62,22 @@ const CourseListing = ({navigation, route}) => {
         ],
       };
     });
+    const headerHeightAnimatedStyle = useAnimatedStyle(() => {
+      return {
+        height: interpolate(
+          scrollY.value,
+          inputRange,
+          [HEADER_HEIGHT, 120],
+          Extrapolate.CLAMP,
+        ),
+      };
+    });
     return (
-      <Animated.View style={styles.courseListingHeaderContainer}>
+      <Animated.View
+        style={[
+          styles.courseListingHeaderContainer,
+          headerHeightAnimatedStyle,
+        ]}>
         <SharedElement
           id={`${sharedElementPrefix}_category_card_bg_${category?.id}`}
           style={[StyleSheet.absoluteFillObject]}>
@@ -155,7 +170,7 @@ const CourseListing = ({navigation, route}) => {
           <LineDivider
             lineStyle={{
               backgroundColor: COLORS.gray20,
-            }} 
+            }}
           />
         )}
       />
