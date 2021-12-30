@@ -211,6 +211,17 @@ const styles = StyleSheet.create({
     bottom: 70,
     left: 30,
   },
+  courseListingHeaderText2: {
+    position: 'absolute',
+    top: -80,
+    left: 0,
+    right: 0,
+  },
+  courseListingHeaderTitle: {
+    textAlign: 'center',
+    color: COLORS.white,
+    ...FONTS.h2,
+  },
   backIconContainer: {
     position: 'absolute',
     top: 40,

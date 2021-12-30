@@ -124,13 +124,22 @@ const CourseListing = ({navigation, route}) => {
         {/* Title */}
         <Animated.View
           style={[
+            styles.courseListingHeaderText2,
+            headerShowOnScrollAnimatedStyle,
+          ]}>
+          <Text style={styles.courseListingHeaderTitle}>{category?.title}</Text>
+        </Animated.View>
+        <Animated.View
+          style={[
             styles.courseListingHeaderText,
             headerHideOnScrollAnimatedStyle,
           ]}>
           <SharedElement
             id={`${sharedElementPrefix}_category_card_title_${category?.id}`}
             style={[StyleSheet.absoluteFillObject]}>
-            <Text style={styles.categoryCardTitle}>{category?.title}</Text>
+            <Text style={[styles.categoryCardTitle, {...FONTS.h1}]}>
+              {category?.title}
+            </Text>
           </SharedElement>
         </Animated.View>
         {/* Back Icon */}
