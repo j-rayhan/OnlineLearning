@@ -8,6 +8,7 @@ import CategoryCard from './CategoryCard';
 import ProgressBar from './ProgressBar';
 import ProfileRadioBtn from './ProfileRadioBtn';
 import ProfileValue from './ProfileValue';
+import FilterModal from './FilterModal';
 export {
   IconBtn,
   IconLabel,
@@ -19,4 +20,5 @@ export {
   ProgressBar,
   ProfileValue,
   ProfileRadioBtn,
+  FilterModal,
 };

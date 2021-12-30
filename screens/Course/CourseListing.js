@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {View, Text, Image, TextInput, StyleSheet} from 'react-native';
-import {Shadow} from 'react-native-shadow-2';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Animated, {
   Extrapolate,
@@ -17,11 +16,8 @@ import {SharedElement} from 'react-native-shared-element';
 import {
   IconBtn,
   LineDivider,
-  TextBtn,
-  ProgressBar,
-  ProfileValue,
-  ProfileRadioBtn,
   HorizontalCourseCard,
+  FilterModal,
 } from '../../components';
 import {COLORS, FONTS, SIZES, icons, dummyData, images} from '../../constants';
 import {styles} from '../styles';
@@ -32,6 +28,8 @@ const CourseListing = ({navigation, route}) => {
   const {category, sharedElementPrefix} = route.params;
   const flatListRef = React.useRef();
   const scrollY = useSharedValue(0);
+  const filterModalShareValue1 = useSharedValue(SIZES.height);
+  const filterModalShareValue2 = useSharedValue(SIZES.height);
   const onScroll = useAnimatedScrollHandler(e => {
     scrollY.value = e.contentOffset.y;
   });
@@ -214,6 +212,17 @@ const CourseListing = ({navigation, route}) => {
               icon={icons.filter}
               iconStyle={styles.iconSize20}
               containerStyle={[styles.center, styles.filterBtnContainer]}
+              onPress={() => {
+                filterModalShareValue1.value = withTiming(0, {
+                  duration: 100,
+                });
+                filterModalShareValue2.value = withDelay(
+                  100,
+                  withTiming(0, {
+                    duration: 500,
+                  }),
+                );
+              }}
             />
           </View>
         }
@@ -244,6 +253,13 @@ const CourseListing = ({navigation, route}) => {
       {renderResults()}
       {/* Header */}
       {renderHeader()}
+      {/* Filter */}
+      <FilterModal
+        {...{
+          filterModalShareValue1,
+          filterModalShareValue2,
+        }}
+      />
     </View>
   );
 };

@@ -246,6 +246,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: COLORS.primary,
   },
+  // Filter modal screen
+  filterModalContainer: {
+    position: 'absolute',
+    bottom: 0,
+    height: SIZES.height,
+    width: SIZES.width,
+  },
+  filterModalBGContainer: {
+    flex: 1,
+    height: SIZES.height,
+    width: SIZES.width,
+    backgroundColor: COLORS.transparentBlack7,
+  },
+  filterModalContent: {
+    position: 'absolute',
+    bottom: 0,
+    height: SIZES.height * 0.9,
+    width: SIZES.width,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    backgroundColor: COLORS.white,
+  }
 });
 
 export {styles};
