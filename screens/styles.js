@@ -197,6 +197,38 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: COLORS.additionalColor11,
   },
+  // course Listing screen
+  courseListingHeaderContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 250,
+    overflow: 'hidden',
+  },
+  courseListingHeaderText: {
+    position: 'absolute',
+    bottom: 70,
+    left: 30,
+  },
+  backIconContainer: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: COLORS.white,
+  },
+  courseListingHeaderImage: {
+    position: 'absolute',
+    right: 40,
+    bottom: -40,
+    width: 100,
+    height: 200,
+  },
 });
 
 export {styles};
