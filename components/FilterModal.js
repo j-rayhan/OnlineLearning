@@ -1,5 +1,12 @@
 import * as React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {SharedElement} from 'react-native-shared-element';
 import Animated, {
   interpolate,
@@ -10,14 +17,55 @@ import Animated, {
 import {useNavigation} from '@react-navigation/native';
 //
 import {LineDivider, TextBtn} from '../components';
-import {COLORS, FONTS, SIZES, icons, dummyData, images} from '../constants';
+import {
+  COLORS,
+  FONTS,
+  SIZES,
+  icons,
+  dummyData,
+  images,
+  constants,
+} from '../constants';
 import {styles} from '../screens/styles';
-
+const ClassTypeOptions = ({containerStyle, classType, isSelected, onPress}) => {
+  return (
+    <TouchableOpacity
+      style={[
+        styles.container,
+        styles.center,
+        styles.classTypeContainer,
+        {
+          backgroundColor: isSelected
+            ? COLORS.primary3
+            : COLORS.additionalColor9,
+          ...containerStyle,
+        },
+      ]}
+      onPress={onPress}>
+      {/* content */}
+      <Image
+        source={classType?.icon}
+        resizeMode="contain"
+        style={[
+          styles.iconSize40,
+          {tintColor: isSelected ? COLORS.white : COLORS.gray80},
+        ]}
+      />
+      <Text
+        style={{
+          marginTop: SIZES.base,
+          color: isSelected ? COLORS.white : COLORS.gray80,
+          ...FONTS.h3,
+        }}>
+        {classType?.label}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
   const navigation = useNavigation();
-  const backHandler = () => {
-    navigation.goBack();
-  };
+  const [selectClassType, setClassType] = React.useState('');
+  const [selectClassLevel, setClassLevel] = React.useState('');
   const filterModalContainerAnimatedStyle = useAnimatedStyle(() => {
     return {
       opacity: interpolate(
@@ -92,6 +140,36 @@ const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
               }}
             />
           </View>
+          {/* Content */}
+          <ScrollView
+            contentContainerStyle={{
+              paddingHorizontal: SIZES.padding,
+              paddingBottom: SIZES.padding * 2,
+            }}>
+            {/* Class Type */}
+            <View style={{marginTop: SIZES.radius}}>
+              <Text style={FONTS.h3}>Class Type</Text>
+              <View
+                style={{
+                  marginTop: SIZES.radius,
+                  flexDirection: 'row',
+                }}>
+                {constants.class_types.map((item, index) => (
+                  <ClassTypeOptions
+                    key={`class_type_key_${index}`}
+                    classType={item}
+                    isSelected={selectClassType === item.id}
+                    containerStyle={{
+                      marginLeft: index === 0 ? 0 : SIZES.base,
+                    }}
+                    onPress={() => {
+                      setClassType(item.id);
+                    }}
+                  />
+                ))}
+              </View>
+            </View>
+          </ScrollView>
         </Animated.View>
       </Animated.View>
     </Animated.View>

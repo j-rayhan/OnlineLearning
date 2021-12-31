@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
   },
+  iconSize40: {width: 40, height: 40},
   iconSize80: {width: 80, height: 80},
   categoryCardTitleContainer: {
     position: 'absolute',
@@ -282,6 +283,12 @@ const styles = StyleSheet.create({
     width: 60,
     backgroundColor: null,
   },
+  classTypeContainer: {
+    paddingHorizontal: SIZES.radius,
+    borderRadius: SIZES.radius,
+    height: 100,
+  },
+  
 });
 
 export {styles};
