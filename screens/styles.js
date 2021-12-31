@@ -267,7 +267,21 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     backgroundColor: COLORS.white,
-  }
+  },
+  filterModalHeaderContainer: {
+    flexDirection: 'row',
+    marginTop: SIZES.padding,
+    paddingHorizontal: SIZES.padding,
+  },
+  filterModalTitle: {
+    flex: 1,
+    textAlign: 'center',
+    ...FONTS.h1,
+  },
+  filterModalCancelBtnContainer: {
+    width: 60,
+    backgroundColor: null,
+  },
 });
 
 export {styles};
