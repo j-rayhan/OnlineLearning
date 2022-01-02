@@ -1,14 +1,5 @@
-/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import {SharedElement} from 'react-native-shared-element';
+import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -18,15 +9,7 @@ import Animated, {
 import {useNavigation} from '@react-navigation/native';
 //
 import {LineDivider, TextBtn, TwoPointSlider} from '../components';
-import {
-  COLORS,
-  FONTS,
-  SIZES,
-  icons,
-  dummyData,
-  images,
-  constants,
-} from '../constants';
+import {COLORS, FONTS, SIZES, icons, constants} from '../constants';
 import {styles} from '../screens/styles';
 const ClassTypeOptions = ({containerStyle, classType, isSelected, onPress}) => {
   return (
@@ -141,6 +124,30 @@ const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
       ],
     };
   });
+  const renderFooter = () => {
+    return (
+      <View style={styles.filterFooterContainer}>
+        {/* reset */}
+        <TextBtn
+          label={'Reset'}
+          contentContainerStyle={styles.filterResetBtnContainer}
+          labelStyle={{
+            color: COLORS.black,
+            ...FONTS.h3,
+          }}
+        />
+        {/* apply */}
+        <TextBtn
+          label={'Apply'}
+          contentContainerStyle={styles.filterApplyBtnContainer}
+          labelStyle={{
+            color: COLORS.white,
+            ...FONTS.h3,
+          }}
+        />
+      </View>
+    );
+  };
   return (
     // Main Container
     <Animated.View
@@ -190,7 +197,7 @@ const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
               <View
                 style={{
                   marginTop: SIZES.radius,
-                  flexDirection: 'row',
+                  ...styles.flexRow,
                 }}>
                 {constants.class_types.map((item, index) => (
                   <ClassTypeOptions
@@ -230,24 +237,14 @@ const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
             {/* Created Within */}
             <View style={{marginTop: SIZES.radius}}>
               <Text style={FONTS.h3}>Created Within</Text>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                }}>
+              <View style={styles.filterCreatedWithinContainer}>
                 {constants.created_within.map((item, index) => (
                   <TextBtn
                     key={`created_within_key_${index}`}
                     label={item.label}
                     contentContainerStyle={{
-                      height: 45,
-                      paddingHorizontal: SIZES.radius,
+                      ...styles.createdWithinContent,
                       marginLeft: index % 3 === 0 ? 0 : SIZES.radius,
-                      marginTop: SIZES.radius,
-                      borderRadius: SIZES.radius,
-                      borderWidth: 1,
-                      borderColor: COLORS.gray20,
                       backgroundColor:
                         item.id === selectedCreatedWithin
                           ? COLORS.primary3
@@ -286,6 +283,8 @@ const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
               </View>
             </View>
           </ScrollView>
+          {/* footer buttons */}
+          {renderFooter()}
         </Animated.View>
       </Animated.View>
     </Animated.View>

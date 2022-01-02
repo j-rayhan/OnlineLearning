@@ -292,6 +292,39 @@ const styles = StyleSheet.create({
     height: 50,
   },
   slideCircle: {height: 15, width: 15, borderRadius: 10, borderWidth: 2},
+  filterFooterContainer: {
+    flexDirection: 'row',
+    height: 50,
+    marginBottom: 30,
+    paddingHorizontal: SIZES.padding,
+  },
+  filterResetBtnContainer: {
+    flex: 1,
+    borderRadius: SIZES.radius,
+    borderWidth: 1,
+    backgroundColor: null,
+  },
+  filterApplyBtnContainer: {
+    flex: 1,
+    marginLeft: SIZES.radius,
+    borderRadius: SIZES.radius,
+    borderWidth: 2,
+    borderColor: COLORS.primary,
+    backgroundColor: COLORS.primary,
+  },
+  filterCreatedWithinContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  createdWithinContent: {
+    height: 45,
+    paddingHorizontal: SIZES.radius,
+    marginTop: SIZES.radius,
+    borderRadius: SIZES.radius,
+    borderWidth: 1,
+    borderColor: COLORS.gray20,
+  },
 });
 
 export {styles};
