@@ -291,6 +291,7 @@ const styles = StyleSheet.create({
   classLevelContainer: {
     height: 50,
   },
+  slideCircle: {height: 15, width: 15, borderRadius: 10, borderWidth: 2},
 });
 
 export {styles};

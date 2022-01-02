@@ -17,7 +17,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import {useNavigation} from '@react-navigation/native';
 //
-import {LineDivider, TextBtn} from '../components';
+import {LineDivider, TextBtn, TwoPointSlider} from '../components';
 import {
   COLORS,
   FONTS,
@@ -265,6 +265,24 @@ const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
                     }}
                   />
                 ))}
+              </View>
+            </View>
+            {/* Class length */}
+            <View style={{marginTop: SIZES.radius}}>
+              <Text style={FONTS.h3}>Class Length</Text>
+              <View
+                style={{
+                  alignItems: 'center',
+                }}>
+                <TwoPointSlider
+                  values={[25, 38]}
+                  min={10}
+                  max={80}
+                  postfix={'min'}
+                  onValueChange={v =>
+                    console.log('PRINT IN %s=====>', 'Sliver START ***', v)
+                  }
+                />
               </View>
             </View>
           </ScrollView>
