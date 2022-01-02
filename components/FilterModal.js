@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {
   Image,
@@ -62,10 +63,47 @@ const ClassTypeOptions = ({containerStyle, classType, isSelected, onPress}) => {
     </TouchableOpacity>
   );
 };
+const ClassLevelOptions = ({
+  containerStyle,
+  classLevel,
+  isListItem,
+  isSelected,
+  onPress,
+}) => {
+  return (
+    <>
+      <TouchableOpacity
+        style={[
+          styles.row,
+          {
+            height: SIZES.padding * 2 + 2,
+            ...containerStyle,
+          },
+        ]}
+        onPress={onPress}>
+        {/* content */}
+        <Text
+          style={{
+            ...styles.container,
+            ...FONTS.body3,
+          }}>
+          {classLevel?.label}
+        </Text>
+        <Image
+          source={isSelected ? icons.checkbox_on : icons.checkbox_off}
+          resizeMode="contain"
+          style={styles.iconSize20}
+        />
+      </TouchableOpacity>
+      {!isListItem && <LineDivider lineStyle={{height: 1}} />}
+    </>
+  );
+};
 const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
   const navigation = useNavigation();
   const [selectClassType, setClassType] = React.useState('');
   const [selectClassLevel, setClassLevel] = React.useState('');
+  const [selectedCreatedWithin, setCreatedWithin] = React.useState('');
   const filterModalContainerAnimatedStyle = useAnimatedStyle(() => {
     return {
       opacity: interpolate(
@@ -164,6 +202,66 @@ const FilterModal = ({filterModalShareValue1, filterModalShareValue2}) => {
                     }}
                     onPress={() => {
                       setClassType(item.id);
+                    }}
+                  />
+                ))}
+              </View>
+            </View>
+            {/* Class Level */}
+            <View style={{marginTop: SIZES.radius}}>
+              <Text style={FONTS.h3}>Class Level</Text>
+              <View>
+                {constants.class_levels.map((item, index) => (
+                  <ClassLevelOptions
+                    key={`class_level_key_${index}`}
+                    classLevel={item}
+                    isSelected={selectClassLevel === item.id}
+                    isListItem={index === constants.class_levels.length - 1}
+                    containerStyle={{
+                      marginLeft: SIZES.base,
+                    }}
+                    onPress={() => {
+                      setClassLevel(item.id);
+                    }}
+                  />
+                ))}
+              </View>
+            </View>
+            {/* Created Within */}
+            <View style={{marginTop: SIZES.radius}}>
+              <Text style={FONTS.h3}>Created Within</Text>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                }}>
+                {constants.created_within.map((item, index) => (
+                  <TextBtn
+                    key={`created_within_key_${index}`}
+                    label={item.label}
+                    contentContainerStyle={{
+                      height: 45,
+                      paddingHorizontal: SIZES.radius,
+                      marginLeft: index % 3 === 0 ? 0 : SIZES.radius,
+                      marginTop: SIZES.radius,
+                      borderRadius: SIZES.radius,
+                      borderWidth: 1,
+                      borderColor: COLORS.gray20,
+                      backgroundColor:
+                        item.id === selectedCreatedWithin
+                          ? COLORS.primary3
+                          : null,
+                    }}
+                    labelStyle={{
+                      color:
+                        item.id === selectedCreatedWithin
+                          ? COLORS.white
+                          : COLORS.black,
+                      ...FONTS.body3,
+                    }}
+                    onPress={() => {
+                      setCreatedWithin(item.id);
                     }}
                   />
                 ))}

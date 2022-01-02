@@ -288,7 +288,9 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.radius,
     height: 100,
   },
-  
+  classLevelContainer: {
+    height: 50,
+  },
 });
 
 export {styles};
