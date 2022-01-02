@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {SharedElement} from 'react-native-shared-element';
+import {SharedElement} from 'react-navigation-shared-element';
 import {SIZES} from '../constants';
 import {styles} from '../screens/styles';
 

@@ -11,7 +11,7 @@ import Animated, {
   withTiming,
   runOnJS,
 } from 'react-native-reanimated';
-import {SharedElement} from 'react-native-shared-element';
+import {SharedElement} from 'react-navigation-shared-element';
 //
 import {
   IconBtn,
