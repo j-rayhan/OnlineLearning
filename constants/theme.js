@@ -92,7 +92,7 @@ export const lightTheme = {
 };
 
 export const selectedTheme = lightTheme;
-
+export const iconSize = (size = 25) => ({width: size, height: size});
 const appTheme = {COLORS, SIZES, FONTS, darkTheme, lightTheme};
 
 export default appTheme;

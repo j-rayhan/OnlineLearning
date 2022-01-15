@@ -1,2 +1,3 @@
 import CourseListing from './CourseListing';
-export {CourseListing};
+import CourseDetails from './CourseDetails';
+export {CourseListing, CourseDetails};

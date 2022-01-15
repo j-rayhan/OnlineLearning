@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Provider as ReduxStoreProvider} from 'react-redux';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 
-import {CourseListing, MainLayout} from './screens';
+import {CourseListing, CourseDetails, MainLayout} from './screens';
 import store from './store';
 
 const Stack = createSharedElementStackNavigator();
@@ -49,6 +49,7 @@ const App = () => {
             component={CourseListing}
             options={() => options}
           />
+          <Stack.Screen name="CourseDetails" component={CourseDetails} />
         </Stack.Navigator>
       </NavigationContainer>
     </ReduxStoreProvider>

@@ -234,6 +234,11 @@ const CourseListing = ({navigation, route}) => {
                 marginVertical: SIZES.padding,
                 marginTop: index === 0 ? SIZES.radius : SIZES.padding,
               }}
+              onPress={() => {
+                navigation.navigate('CourseDetails', {
+                  selectedCourse: item,
+                })
+              }}
             />
           );
         }}
@@ -265,13 +270,15 @@ const CourseListing = ({navigation, route}) => {
 };
 CourseListing.sharedElements = (route, otherRoute, showing) => {
   const {category, sharedElementPrefix} = route.params;
-  return [
-    {
-      id: `${sharedElementPrefix}_category_card_bg_${category?.id}`,
-    },
-    {
-      id: `${sharedElementPrefix}_category_card_title_${category?.id}`,
-    },
-  ];
+  if (otherRoute.name === 'Dashboard') {
+    return [
+      {
+        id: `${sharedElementPrefix}_category_card_bg_${category?.id}`,
+      },
+      {
+        id: `${sharedElementPrefix}_category_card_title_${category?.id}`,
+      },
+    ];
+  }
 };
 export default CourseListing;
