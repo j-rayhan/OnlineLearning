@@ -8,6 +8,7 @@ import {
   Animated,
   Keyboard,
 } from 'react-native';
+import Video from 'react-native-video';
 
 import {IconBtn, LineDivider} from '../../components';
 import {
@@ -23,6 +24,7 @@ import {styles} from '../styles';
 
 const CourseDetails = ({navigation, route}) => {
   const {selectedCourse} = route.params;
+  const [playVideo, setPlayVideo] = React.useState(false);
   const renderHeaderComponent = () => {
     return (
       <>
@@ -48,23 +50,23 @@ const CourseDetails = ({navigation, route}) => {
       {/* Share & Favorite */}
       <View style={{flexDirection: 'row'}}>
         <IconBtn
-          icon={icons.star_1}
+          icon={icons.media}
           iconStyle={{
             tintColor: COLORS.white,
           }}
           containerStyle={{
             ...styles.center,
-            ...iconSize(50)
+            ...iconSize(50),
           }}
           />
           <IconBtn
-            icon={icons.favourite}
+            icon={icons.favourite_outline}
             iconStyle={{
               tintColor: COLORS.white,
             }}
             containerStyle={{
               ...styles.center,
-              ...iconSize(50)
+              ...iconSize(50),
             }}
             />
       </View>
@@ -72,6 +74,22 @@ const CourseDetails = ({navigation, route}) => {
     )
   }
   const renderHeader = () => {
+    if (playVideo) {
+      return (
+        <View
+          style={{
+            flexDirection: 'row',
+            paddingHorizontal: SIZES.radius,
+            paddingBottom: SIZES.base,
+            height: 85,
+            backgroundColor: COLORS.black,
+            alignItems: 'flex-end',
+          }}
+        >
+          {renderHeaderComponent()}
+        </View>
+      )
+    }
     return (
       <View
         style={{
@@ -120,8 +138,23 @@ const CourseDetails = ({navigation, route}) => {
               ...iconSize(55),
               ...styles.center,
             }}
+            onPress={() => setPlayVideo(true)}
           />
           </ImageBackground>
+        {playVideo && (
+          <Video
+            source={{uri: dummyData?.sample_video_url}}
+            controls={true}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              backgroundColor: COLORS.black,
+            }}
+          />
+        )}
       </View>
     );
   };

@@ -53,6 +53,7 @@ export const SIZES = {
   // app dimensions
   width,
   height,
+  '100_P': '100%',
 };
 export const FONTS = {
   largeTitle: {fontFamily: 'Roboto-Black', fontSize: SIZES.largeTitle},

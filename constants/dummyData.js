@@ -348,7 +348,8 @@ const notificationByDays = [
     ],
   },
 ];
-
+const sample_video_url =
+  'https://vod-progressive.akamaized.net/exp=1642265135~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4622%2F16%2F423112127%2F1830209595.mp4~hmac=93d3c05439868c8706fb34bd3c718966db48d6741d893853ef8452d9545cbe9e/vimeo-prod-skyfire-std-us/01/4622/16/423112127/1830209595.mp4?filename=production+ID%3A4495983.mp4';
 export default {
   categories,
   courses_list_1,
@@ -356,4 +357,5 @@ export default {
   top_searches,
   course_details,
   notificationByDays,
+  sample_video_url,
 };
