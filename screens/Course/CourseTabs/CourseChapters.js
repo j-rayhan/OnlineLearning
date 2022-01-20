@@ -2,7 +2,13 @@
 import * as React from 'react';
 import {View, Text, ScrollView, Image, FlatList} from 'react-native';
 
-import {IconBtn, IconLabel, LineDivider, TextBtn} from '../../../components';
+import {
+  HorizontalCourseCard,
+  IconBtn,
+  IconLabel,
+  LineDivider,
+  TextBtn,
+} from '../../../components';
 import {
   COLORS,
   FONTS,
@@ -173,7 +179,52 @@ const CourseChapters = ({title}) => {
       </View>
     );
   };
-
+  const renderPopularCourse = () => {
+    return (
+      <View style={{marginTop: SIZES.padding}}>
+        {/* Section Header */}
+        <View
+          style={{
+            flexDirection: 'row',
+            paddingHorizontal: SIZES.padding,
+          }}>
+          <Text style={{flex: 1, ...FONTS.h2}}>Popular course</Text>
+          <TextBtn
+            label={'S ee all'}
+            contentContainerStyle={{
+              width: 80,
+              borderRadius: 35,
+              backgroundColor: COLORS.primary,
+            }}
+          />
+        </View>
+        {/* Popular course list */}
+        <FlatList
+          data={dummyData.courses_list_2}
+          listKey="popular_course"
+          scrollEnabled={false}
+          keyExtractor={item => `popular_course_${item.id}`}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            marginTop: SIZES.radius,
+            paddingHorizontal: SIZES.padding,
+          }}
+          renderItem={({item, index}) => {
+            return (
+              <HorizontalCourseCard
+                course={item}
+                containerStyle={{
+                  marginVertical: SIZES.padding,
+                  marginTop: index === 0 ? SIZES.radius : SIZES.padding,
+                }}
+              />
+            );
+          }}
+          ItemSeparatorComponent={() => <LineDivider />}
+        />
+      </View>
+    );
+  };
   return (
     <ScrollView>
       {/* Header */}
@@ -188,6 +239,7 @@ const CourseChapters = ({title}) => {
       {/* Chapters */}
       {renderChapter()}
       {/* Popular course */}
+      {renderPopularCourse()}
     </ScrollView>
   );
 };
