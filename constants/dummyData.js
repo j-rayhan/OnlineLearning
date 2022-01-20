@@ -142,7 +142,7 @@ const course_details = {
   number_of_students: '33.5k Students',
   duration: '2h 30m',
   instructor: {
-    name: 'ByProgrammers',
+    name: 'Mr.Jahirul',
     title: 'Full Stack Programmer',
   },
   videos: [
@@ -203,21 +203,21 @@ const course_details = {
     {
       id: 0,
       name: 'UI Fundamentals',
-      author: 'Shared by ByProgrammers',
+      author: 'Shared by Mr.Jahirul',
       upload_date: '13th Sep 2021',
       thumbnail: require('../assets/images/pdf.png'),
     },
     {
       id: 1,
       name: 'UX Checklist',
-      author: 'Shared by ByProgrammers',
+      author: 'Shared by Mr.Jahirul',
       upload_date: '11th Sep 2021',
       thumbnail: require('../assets/images/doc.png'),
     },
     {
       id: 2,
       name: 'Sketch File',
-      author: 'Shared by ByProgrammers',
+      author: 'Shared by Mr.Jahirul',
       upload_date: '7th Sep 2021',
       thumbnail: require('../assets/images/sketch.png'),
     },
@@ -226,7 +226,7 @@ const course_details = {
     {
       id: 0,
       profile: require('../assets/images/profile.png'),
-      name: 'ByProgrammers',
+      name: 'Mr.Jahirul',
       no_of_comments: '11 comments',
       no_of_likes: '72 likes',
       posted_on: '5 days ago',
@@ -236,28 +236,28 @@ const course_details = {
         {
           id: 0,
           profile: require('../assets/images/student_1.png'),
-          name: 'ByProgrammers',
+          name: 'Mr.Jahirul',
           posted_on: '4 days ago',
           comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
         {
           id: 1,
           profile: require('../assets/images/student_1.png'),
-          name: 'ByProgrammers',
+          name: 'Mr.Jahirul',
           posted_on: '4 days ago',
           comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
         {
           id: 2,
           profile: require('../assets/images/student_1.png'),
-          name: 'ByProgrammers',
+          name: 'Mr.Jahirul',
           posted_on: '4 days ago',
           comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
         {
           id: 3,
           profile: require('../assets/images/student_1.png'),
-          name: 'ByProgrammers',
+          name: 'Mr.Jahirul',
           posted_on: '4 days ago',
           comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
@@ -266,7 +266,7 @@ const course_details = {
     {
       id: 1,
       profile: require('../assets/images/profile.png'),
-      name: 'ByProgrammers',
+      name: 'Mr.Jahirul',
       no_of_comments: '21 comments',
       no_of_likes: '372 likes',
       posted_on: '14 days ago',
@@ -276,21 +276,21 @@ const course_details = {
         {
           id: 0,
           profile: require('../assets/images/student_1.png'),
-          name: 'ByProgrammers',
+          name: 'Mr.Jahirul',
           posted_on: '7 days ago',
           comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
         {
           id: 1,
           profile: require('../assets/images/student_1.png'),
-          name: 'ByProgrammers',
+          name: 'Mr.Jahirul',
           posted_on: '7 days ago',
           comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
         {
           id: 2,
           profile: require('../assets/images/student_1.png'),
-          name: 'ByProgrammers',
+          name: 'Mr.Jahirul',
           posted_on: '7 days ago',
           comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
         },
@@ -349,7 +349,7 @@ const notificationByDays = [
   },
 ];
 const sample_video_url =
-  'https://vod-progressive.akamaized.net/exp=1642265135~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4622%2F16%2F423112127%2F1830209595.mp4~hmac=93d3c05439868c8706fb34bd3c718966db48d6741d893853ef8452d9545cbe9e/vimeo-prod-skyfire-std-us/01/4622/16/423112127/1830209595.mp4?filename=production+ID%3A4495983.mp4';
+  'https://vod-progressive.akamaized.net/exp=1642666072~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4995%2F11%2F299978182%2F1145430648.mp4~hmac=194e3ebdda645714fbf7357234115a31b1f0c269913461271e14ec33f090d1e0/vimeo-prod-skyfire-std-us/01/4995/11/299978182/1145430648.mp4?filename=Pexels+Videos+1580507.mp4';
 export default {
   categories,
   courses_list_1,
