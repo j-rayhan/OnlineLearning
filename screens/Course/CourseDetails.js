@@ -22,6 +22,7 @@ import {
 } from '../../constants';
 import {styles} from '../styles';
 import CourseChapters from './CourseTabs/CourseChapters';
+import CourseFile from './CourseTabs/CourseFile';
 
 const course_details_tabs = constants.course_details_tabs.map(item => ({
   ref: React.createRef(),
@@ -296,7 +297,7 @@ const CourseDetails = ({navigation, route}) => {
             return (
               <View style={{width: SIZES.width}}>
                 {index === 0 && <CourseChapters />}
-                {index === 1 && <Text>Files</Text>}
+                {index === 1 && <CourseFile />}
                 {index === 2 && <Text>Description</Text>}
               </View>
             );

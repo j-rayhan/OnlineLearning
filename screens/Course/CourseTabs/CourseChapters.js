@@ -190,7 +190,7 @@ const CourseChapters = ({title}) => {
           }}>
           <Text style={{flex: 1, ...FONTS.h2}}>Popular course</Text>
           <TextBtn
-            label={'S ee all'}
+            label={'See all'}
             contentContainerStyle={{
               width: 80,
               borderRadius: 35,
