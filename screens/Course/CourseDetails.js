@@ -22,6 +22,7 @@ import {
 } from '../../constants';
 import {styles} from '../styles';
 import CourseChapters from './CourseTabs/CourseChapters';
+import CourseDiscussion from './CourseTabs/CourseDiscussion';
 import CourseFile from './CourseTabs/CourseFile';
 
 const course_details_tabs = constants.course_details_tabs.map(item => ({
@@ -96,7 +97,10 @@ const Tabs = ({scrollX, onTabPress}) => {
               paddingHorizontal: 15,
               ...styles.center,
             }}
-            onPress={() => onTabPress(index)}>
+            onPress={() => {
+              Keyboard.dismiss();
+              onTabPress(index);
+            }}>
             <Text
               style={{
                 ...FONTS.h3,
@@ -298,7 +302,7 @@ const CourseDetails = ({navigation, route}) => {
               <View style={{width: SIZES.width}}>
                 {index === 0 && <CourseChapters />}
                 {index === 1 && <CourseFile />}
-                {index === 2 && <Text>Description</Text>}
+                {index === 2 && <CourseDiscussion />}
               </View>
             );
           }}

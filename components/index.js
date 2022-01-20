@@ -1,5 +1,6 @@
 import IconBtn from './IconBtn';
 import IconLabel from './IconLabel';
+import IconLabelBtn from './IconLabelBtn';
 import TextBtn from './TextBtn';
 import VerticalCourseCard from './VerticalCourseCard';
 import HorizontalCourseCard from './HorizontalCourseCard';
@@ -13,6 +14,7 @@ import TwoPointSlider from './TwoPointSlider';
 export {
   IconBtn,
   IconLabel,
+  IconLabelBtn,
   TextBtn,
   VerticalCourseCard,
   HorizontalCourseCard,
